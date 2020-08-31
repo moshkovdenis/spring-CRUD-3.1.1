@@ -1,12 +1,11 @@
 package ru.denis.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Objects;
+
 
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
+public class User  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,12 +20,6 @@ public class User implements Serializable {
     private String mail;
 
     public User() {
-    }
-
-    public User(String name, String surname, String mail) {
-        this.name = name;
-        this.surname = surname;
-        this.mail = mail;
     }
 
     public Long getId() {
@@ -59,28 +52,5 @@ public class User implements Serializable {
 
     public void setMail(String mail) {
         this.mail = mail;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) &&
-                Objects.equals(name, user.name) &&
-                Objects.equals(surname, user.surname) &&
-                Objects.equals(mail, user.mail);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, surname, mail);
     }
 }
