@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+</head>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    a:link, a:visited {
+        background-color: white;
+        color: black;
+        border: 2px solid green;
+        padding: 10px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    a:hover, a:active {
+        background-color: green;
+        color: white;
+    }
+</style>
+<body>
+<div>
+    <h1>User list</h1>
+    <a href="/newUser"><h3>Create new User</h3></a>
+    <br/><br/>
+    <table style="width:100%">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Mail</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="users : ${userList}">
+            <td th:text="${users.getId()}"></td>
+            <td th:text="${users.getName()}"></td>
+            <td th:text="${users.getSurname()}"></td>
+            <td th:text="${users.getMail()}"></td>
+            <td>
+                <a th:href="@{'/edit/' + ${users.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${users.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
