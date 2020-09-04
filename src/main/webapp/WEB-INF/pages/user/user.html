@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User Page</title>
+</head>
+<body>
+<h2>Hello <span th:text="${user.getUsername()}">USERNAME</span></h2>
+<h3>ID: <span th:text="${user.id}">ID</span></h3>
+<h3>NAME:  <span th:text="${user.name}">NAME</span></h3>
+<h3>SURNAME:  <span th:text="${user.surname}">SURNAME</span></h3>
+<h3>EMAIL: <span th:text="${user.mail}">EMAIL</span></h3>
+<h2><a href="/logout">Logout</a></h2>
+</body>
+</html>

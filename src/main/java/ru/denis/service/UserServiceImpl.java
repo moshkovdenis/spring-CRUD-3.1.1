@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.denis.dao.UserDao;
+import ru.denis.model.Role;
 import ru.denis.model.User;
 
 import java.util.List;
 
-@Service
+@Service(value = "UserServiceImpl")
 @Transactional
 public class UserServiceImpl implements UserService {
 
@@ -39,5 +40,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(Long id) {
         userDao.deleteUser(id);
+    }
+
+    @Override
+    public User findUserByName(String name) {
+        return userDao.findUserByName(name);
+    }
+
+    @Override
+    public Role findRoleByName(String roleName) {
+        return userDao.findRoleByName(roleName);
     }
 }

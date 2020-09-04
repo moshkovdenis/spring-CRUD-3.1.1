@@ -40,7 +40,7 @@
 <body>
 <div>
     <h1>User list</h1>
-    <a href="/newUser"><h3>Create new User</h3></a>
+    <a href="/admin/addUser"><h3>Create new User</h3></a>
     <br/><br/>
     <table style="width:100%">
         <thead>
@@ -59,13 +59,14 @@
             <td th:text="${users.getSurname()}"></td>
             <td th:text="${users.getMail()}"></td>
             <td>
-                <a th:href="@{'/edit/' + ${users.id}}">Edit</a>
+                <a th:href="@{'admin/edit/' + ${users.id}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete/' + ${users.id}}">Delete</a>
+                <a th:href="@{'delete/' + ${users.id}}">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
+    <h2><a href="/logout">Logout</a></h2>
 </div>
 </body>
 </html>
