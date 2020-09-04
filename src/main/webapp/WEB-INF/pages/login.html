@@ -10,12 +10,9 @@
         <label>Username</label>
         <input name="username">
         <label>Password</label>
-        <input name="password"/>
+        <input type="password" name="password"/>
         <input type="submit"/>
     </form>
-    <div th:if="${error}">
-        <h2>Invalid username or password;</h2>
-    </div>
 </div>
 <a href="/registration">Registration</a>
 </body>

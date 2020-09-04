@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import ru.denis.model.User;
 import ru.denis.service.UserService;
 
@@ -19,17 +18,18 @@ public class MainPageController {
     private UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(@RequestParam(value = "error", required = false) boolean error, Model model) {
-        if (error) {
-            model.addAttribute("error", true);
-        }
+    public String login() {
         return "login";
     }
 
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
     public String registration(@ModelAttribute("user") User user) {
         user.setRoles(new HashSet<>());
-        user.getRoles().add(userService.findRoleByName("ROLE_USER"));
+        if (user.getName().equals("admin")) {
+            user.getRoles().add(userService.findRoleByName("ROLE_ADMIN"));
+        } else {
+            user.getRoles().add(userService.findRoleByName("ROLE_USER"));
+        }
         userService.addUser(user);
         return "redirect:/login";
     }
