@@ -10,6 +10,7 @@ import ru.denis.service.UserService;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class AdminController {
@@ -41,7 +42,7 @@ public class AdminController {
     @RequestMapping(value = "admin/edit/{id}", method = RequestMethod.GET)
     public ModelAndView editPage(@PathVariable(name = "id") Long id) {
         ModelAndView modelAndView = new ModelAndView("admin/editUser");
-        User user = userService.findById(id);
+        Optional<User> user = userService.findById(id);
         modelAndView.addObject("user", user);
         return modelAndView;
     }
