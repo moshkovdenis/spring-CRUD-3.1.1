@@ -1,6 +1,7 @@
-package ru.denis.config;
+package ru.denis.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,6 +16,7 @@ import ru.denis.security.SuccessUserHandler;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Qualifier("UserDetailServiceImpl")
     @Autowired
     private UserDetailsService userDetailsService;
 
